@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="KI-Hilfe für Förderanträge von Vereinen: Antrag schreiben und Projekte prüfen." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Antragshelfer</title>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <strong class="brand">Antragshelfer</strong>
+        <span class="muted small">KI-Hilfe für Förderanträge, gehört zu VereinsVote</span>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tab-draft" aria-controls="panel-draft" aria-selected="true">Antrag schreiben</button>
+        <button role="tab" id="tab-review" aria-controls="panel-review" aria-selected="false">Antrag prüfen</button>
+      </div>
+
+      <section id="panel-draft" role="tabpanel" aria-labelledby="tab-draft">
+        <p class="intro">
+          Für Vereine: Schreib in Stichpunkten, was ihr vorhabt. Daraus wird ein Projekttext, den ihr bei einem
+          Wettbewerb einreichen könnt.
+        </p>
+        <form id="draft-form" class="form" novalidate>
+          <label>Name des Vereins (freiwillig)
+            <input name="clubName" type="text" maxlength="120" />
+          </label>
+          <label>Eure Notizen
+            <textarea name="notes" rows="8" maxlength="4000" placeholder="Was wollt ihr machen, wer hat etwas davon, was kostet es ungefähr?"></textarea>
+          </label>
+          <div class="row">
+            <button type="submit" class="btn">Text vorschlagen</button>
+            <button type="button" class="btn quiet" id="draft-example">Beispiel einfügen</button>
+          </div>
+          <p class="err" id="draft-error" hidden></p>
+        </form>
+        <div id="draft-result" hidden></div>
+      </section>
+
+      <section id="panel-review" role="tabpanel" aria-labelledby="tab-review" hidden>
+        <p class="intro">
+          Für Sponsoren: Prüft ein eingereichtes Projekt. Regeln finden Doppelungen, Kontaktdaten und zu hohe
+          Förderziele, die KI schätzt den Rest ein. Entscheiden müsst ihr selbst.
+        </p>
+        <div class="row" id="review-examples"><span class="small muted">Beispiele:</span></div>
+        <form id="review-form" class="form" novalidate>
+          <label>Titel <input name="title" type="text" maxlength="100" /></label>
+          <label>Kurzbeschreibung <textarea name="summary" rows="2" maxlength="280"></textarea></label>
+          <label>Beschreibung <textarea name="description" rows="6" maxlength="5000"></textarea></label>
+          <div class="cols">
+            <label>Kategorie <select name="category"></select></label>
+            <label>Förderziel in Euro <input name="fundingGoalEuro" type="number" min="1" step="1" /></label>
+            <label>Höchstes Preisgeld (freiwillig) <input name="maxPrizeEuro" type="number" min="1" step="1" placeholder="z. B. 6000" /></label>
+          </div>
+          <label class="check"><input type="checkbox" name="compare" checked /> Mit 5 Projekten aus der VereinsVote-Demo auf Doppelungen vergleichen</label>
+          <div class="row">
+            <button type="submit" class="btn">Projekt prüfen</button>
+          </div>
+          <p class="err" id="review-error" hidden></p>
+        </form>
+        <div id="review-result" hidden></div>
+      </section>
+    </main>
+
+    <footer class="wrap small muted">
+      Ein Portfolio-Projekt. Die KI macht nur Vorschläge, sie entscheidet nichts. Eingaben werden zur Auswertung an
+      Google Gemini geschickt, bitte keine persönlichen Daten eintragen.
+    </footer>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

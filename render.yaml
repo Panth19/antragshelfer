@@ -1,0 +1,12 @@
+# Render: New > Blueprint > pick this repo. No database needed.
+services:
+  - type: web
+    name: antragshelfer
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false # paste your key when Render asks
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite

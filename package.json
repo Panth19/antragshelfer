@@ -1,0 +1,38 @@
+{
+  "name": "antragshelfer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AI help for writing and reviewing club funding applications",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
+    "build": "vite build && tsup",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "eval": "tsx --env-file-if-exists=.env scripts/eval.ts"
+  },
+  "dependencies": {
+    "@fastify/compress": "^9.2.2",
+    "@fastify/helmet": "^13.2.0",
+    "@fastify/rate-limit": "^11.2.1",
+    "@fastify/static": "^10.1.7",
+    "@fontsource-variable/source-sans-3": "^5.3.1",
+    "@google/genai": "^2.31.0",
+    "fastify": "^5.12.7",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "^5.0.5",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}
