@@ -1,6 +1,6 @@
 # Antragshelfer
 
-AI help for club funding applications, built as a companion to [VereinsVote](https://github.com/Panth19/vereinsvote).
+AI help for club funding applications.
 
 - **Antrag schreiben** (for clubs): paste rough notes, get a project text with title, summary and description that fits VereinsVote's limits, a suggested category, and questions about what's still missing.
 - **Antrag prüfen** (for sponsors): checks a submitted project for duplicates, contact data, advertising, spam, a funding goal above the highest prize, and unclear use of money. It also writes a short note for the jury. It only suggests; a person decides.
