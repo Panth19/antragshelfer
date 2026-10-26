@@ -45,48 +45,7 @@ The dataset is small and hand-written, so it's a sanity check, not a benchmark. 
 - **Free tier friendly:** Flash-Lite by default (much larger free daily quota than Flash), answers cached for 24 hours, AI requests limited per IP. When the quota is used up or the model is down, the review falls back to the rule checks and says so.
 - **Small page:** plain TypeScript, no framework, about 4 kB of JavaScript after compression.
 
-## Running it
 
-You need Node.js 22.
-
-```bash
-npm install
-cp .env.example .env        # Windows: copy .env.example .env
-# put your free key from https://aistudio.google.com/apikey into .env
-npm run dev                 # http://localhost:3100
-```
-
-Without a key the server still runs: reviews use the rule checks only, and writing a draft says no AI is configured.
-
-For working on the page with hot reload, run `npx vite` in a second terminal and open http://localhost:5174.
-
-```bash
-npm test                    # 42 tests, no API key or network needed
-npm run eval                # needs GEMINI_API_KEY
-```
-
-The tests use a stand-in model and a mocked Gemini SDK, so they run offline and cost nothing.
-
-## Deploying
-
-On Render: **New > Blueprint**, pick this repo, paste the Gemini key when asked. There's no database. The free plan sleeps after 15 minutes without visitors, so the first request afterwards takes about a minute.
-
-Free-tier prompts may be used by Google to improve its products, so the page asks people not to enter personal data.
-
-## Structure
-
-```
-src/categories.ts   categories and text limits shared with VereinsVote
-src/schemas.ts      request and model-output schemas (Zod)
-src/rules.ts        rule checks and the keyword baseline
-src/llm.ts          Gemini client behind a small interface
-src/prompts.ts      system prompts
-src/services.ts     combines rules and model into draft and review
-src/app.ts          HTTP API, rate limits, caching
-web/                the page (plain TypeScript, Vite)
-eval/, scripts/     evaluation set and script
-test/               tests with a stand-in model
-```
 
 ## What I'd do next
 
