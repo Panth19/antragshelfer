@@ -47,8 +47,4 @@ The dataset is small and hand-written, so it's a sanity check, not a benchmark. 
 
 
 
-## What I'd do next
 
-- Call it from VereinsVote: a "Text verbessern" button in the submit form and the AI hints in the sponsor's review queue.
-- Grow the evaluation set with real (anonymised) submissions and track the numbers per model version.
-- Use embeddings for the duplicate check, to also catch projects that say the same thing in different words.
